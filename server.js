@@ -14,7 +14,9 @@ app.post("/contact", async (req, res) => {
     const { name, email, message } = req.body;
 
     const transporter = nodemailer.createTransport({
-        service: "gmail",
+        host: "smtp.gmail.com",
+        port: 587,
+        secure: false,
         auth: {
             user: "Zaibanees33@gmail.com",
             pass: "nejslcamwtjjcqyu"
