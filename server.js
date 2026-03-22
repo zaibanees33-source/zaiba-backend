@@ -1,6 +1,24 @@
+require("dotenv").config();
+console.log("EMAIL:", process.env.EMAIL_USER); 
+console.log("PASS:", process.env.EMAIL_PASS); 
 const express = require("express");
 const cors = require("cors");
 const nodemailer = require("nodemailer");
+const mongoose = require("mongoose");
+
+mongoose.connect(process.env.MONGODB_URI, {
+    serverSelectionTimeoutMS: 5000,
+    family: 4
+})
+  .then(() => console.log("MongoDB Connected!"))
+  .catch((err) => console.log("MongoDB Error:", err));
+
+const messageSchema = new mongoose.Schema({
+    name: String,
+    email: String,
+    message: String,
+    date: { type: Date, default: Date.now }
+});
 
 const app = express();
 app.use(cors());
@@ -12,14 +30,14 @@ app.get("/", (req, res) => {
 
 app.post("/contact", async (req, res) => {
     const { name, email, message } = req.body;
-
+    if (!name || !email || !message) {
+  return res.status(400).send("All fields are required");
+    }
     const transporter = nodemailer.createTransport({
-        host: "smtp.gmail.com",
-        port: 587,
-        secure: false,
+        service: "gmail",
         auth: {
-            user: "Zaibanees33@gmail.com",
-            pass: "nejslcamwtjjcqyu"
+            user: process.env.EMAIL_USER,
+            pass: process.env.EMAIL_PASS
         }
     });
 
@@ -30,13 +48,13 @@ app.post("/contact", async (req, res) => {
             subject: "New Message from " + name,
             text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`
         });
-        res.send("Message sent successfully!");
-    } catch (error) {
+        res.status(200).json({ message: "Message sent successfully!" });
+    }catch (error) {
         console.log("Error:", error);
-        res.send("Failed to send message");
-    }
+        res.status(500).json({ error: "Failed to send message"});
+}
 });
-  const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-    console.log("Server running on port" + PORT);
+
+app.listen(5000, () => {
+    console.log("Server running on http://localhost:5000");
 });
