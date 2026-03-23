@@ -1,0 +1,195 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* New Colors */
+:root {
+    --olive: #6C7A3A;
+    --cream: #d7e1e5;
+    --text-dark: #3E3A2F;
+    --soft-beige: #FFF4E6;
+    --light-olive: #8A9954;
+}
+
+body {
+    background: var(--cream);
+    color: var(--text-dark);
+    overflow-x: hidden;
+}
+
+/* Navbar */
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 50px;
+    font-size: 18px;
+    background: var(--olive);
+    color: white;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+nav ul {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: var(--soft-beige);
+}
+
+/* Home Section */
+.gradient {
+    background: var(--cream);
+    padding: 150px 50px;
+}
+
+.name-title {
+    font-size: 60px;
+    font-weight: 700;
+    color: var(--olive);
+}
+
+.intro-text {
+    max-width: 700px;
+    line-height: 1.8;
+    font-size: 18px;
+}
+
+/* Section Titles */
+h2 {
+    font-size: 40px;
+    margin-bottom: 20px;
+    margin-top: 30px;
+    color: var(--olive);
+}
+
+/* About Section */
+#about {
+    padding: 100px 50px;
+    background: var(--soft-beige);
+    border-top: 4px solid var(--olive);
+}
+
+.bio-text {
+    max-width: 850px;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    color: var(--text-dark);
+}
+
+/* Skills */
+.skills-title {
+    margin-bottom: 20px;
+}
+
+.skills-box div {
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.progress-bar {
+    width: 100%;
+    background: #E5D7C5;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.progress {
+    height: 12px;
+    background: var(--olive);
+}
+
+/* Education Section */
+#education {
+    padding: 120px 50px;
+    background: var(--cream);
+}
+
+.edu-card {
+    background: var(--soft-beige);
+    padding: 30px;
+    border-left: 4px solid var(--olive);
+    max-width: 600px;
+    line-height: 1.8;
+}
+
+/* Contact */
+#contact {
+    padding: 120px 50px;
+    background: var(--olive);
+    color: white;
+}
+
+.tagline {
+    opacity: 0.9;
+    font-style: italic;
+}
+
+.contact-info {
+    font-size: 20px;
+    line-height: 2;
+    margin-top: 20px;
+}
+
+/* Feedback Form */
+form {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 500px;
+}
+
+input, textarea {
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    background: var(--cream);
+    color: var(--text-dark);
+    box-shadow: 0px 0px 3px rgba(0,0,0,0.2);
+}
+
+button {
+    padding: 12px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    background: var(--soft-beige);
+    border: 2px solid white;
+    color: var(--text-dark);
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: 600;
+}
+
+button:hover {
+    background: white;
+    color: var(--olive);
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 30px;
+    margin-top: 30px;
+    background: var(--cream);
+    color: var(--text-dark);
+    opacity: 0.7;
+}

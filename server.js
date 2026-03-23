@@ -5,7 +5,7 @@ const express = require("express");
 const cors = require("cors");
 const nodemailer = require("nodemailer");
 const mongoose = require("mongoose");
-
+require('path');
 mongoose.connect(process.env.MONGODB_URI, {
     serverSelectionTimeoutMS: 5000,
     family: 4
@@ -23,7 +23,8 @@ const messageSchema = new mongoose.Schema({
 const app = express();
 app.use(cors());
 app.use(express.json());
-
+const path = require('path');
+app.use(express.static(path.join(__dirname, 'public')));
 app.get("/", (req, res) => {
     res.send("Server is running!");
 });
