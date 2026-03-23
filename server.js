@@ -25,9 +25,7 @@ app.use(cors());
 app.use(express.json());
 const path = require('path');
 app.use(express.static(path.join(__dirname, 'public')));
-app.get("/", (req, res) => {
-    res.send("Server is running!");
-});
+
 
 app.post("/contact", async (req, res) => {
     const { name, email, message } = req.body;
