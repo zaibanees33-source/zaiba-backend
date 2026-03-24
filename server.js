@@ -3,7 +3,7 @@ console.log("EMAIL:", process.env.EMAIL_USER);
 console.log("PASS:", process.env.EMAIL_PASS); 
 const express = require("express");
 const cors = require("cors");
-const sgmail = require("@sendgridid/mail");
+const sgmail = require("@sendgrid/mail");
 sgmail.setApiKey(process.env.SENDGRID_API_KEY)
 const mongoose = require("mongoose");
 require('path');
@@ -54,7 +54,6 @@ app.post("/contact", async (req, res) => {
         res.status(500).json({ error: "Failed to send message"});
 }
 });
-
 app.listen(5000, () => {
     console.log("Server running on http://localhost:5000");
 });
