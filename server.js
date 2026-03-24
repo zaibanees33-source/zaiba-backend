@@ -3,7 +3,8 @@ console.log("EMAIL:", process.env.EMAIL_USER);
 console.log("PASS:", process.env.EMAIL_PASS); 
 const express = require("express");
 const cors = require("cors");
-const nodemailer = require("nodemailer");
+const sgmail = require("@sendgridid/mail");
+sgmail.setApiKey(process.env.SENDGRID_API_KEY)
 const mongoose = require("mongoose");
 require('path');
 mongoose.connect(process.env.MONGODB_URI, {
@@ -32,13 +33,13 @@ app.post("/contact", async (req, res) => {
     if (!name || !email || !message) {
   return res.status(400).send("All fields are required");
     }
-    const transporter = nodemailer.createTransport({
-        service: "gmail",
-        auth: {
-            user: process.env.EMAIL_USER,
-            pass: process.env.EMAIL_PASS
-        }
-    });
+    await sgMail.send({
+    to: "Zaibanees33@gmail.com",
+    from: "Zaibanees33@gmail.com",
+    replyTo: email,
+    subject: "New Message from " + name,
+    text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`
+});
 
     try {
         await transporter.sendMail({
