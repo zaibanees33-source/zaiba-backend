@@ -7,11 +7,11 @@
 
 /* New Colors */
 :root {
-    --olive: #e0e6c9;
-    --cream: #d7e1e5;
+    --olive: #fafbf3;
+    --cream: #13c54f;
     --text-dark: #1c1a13;
     --soft-beige: #0e0b07;
-    --light-olive: #8A9954;
+    --light-olive: #b4397b;
 }
 body {
     background: var(--cream);
@@ -40,7 +40,7 @@ nav ul {
 }
 
 nav ul li a {
-    color: rgb(169, 27, 27);
+    color: rgb(90, 25, 195);
     text-decoration: none;
     font-weight: 500;
     transition: 0.3s;
